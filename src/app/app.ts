@@ -1,11 +1,14 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, Inject } from '@angular/core';
+import { ProductService } from './productservice';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html',
+  template: ``,
   standalone: false,
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('Practice8');
+  constructor(@Inject(ProductService) private productService:ProductService){
+    console.log(productService.getProducts());
+  }
 }
